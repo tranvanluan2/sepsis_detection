@@ -228,7 +228,7 @@ def read_challenge_data(input_file):
 
 
 if __name__ == '__main__':
-    threshold = 0.8
+    threshold = 0.5
     if len(sys.argv) != 3:
         sys.exit('Usage: %s input[.psv] output[.out]' % sys.argv[0])
 

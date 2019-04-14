@@ -4,7 +4,7 @@
 # prior to running your entry's 'setup.sh' and 'next.sh' scripts.
 # Each package must be on a separate line.
 
-sklearn
+scikit-learn
 numpy
 scipy
 pandas

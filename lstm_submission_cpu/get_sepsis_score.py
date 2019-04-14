@@ -98,7 +98,7 @@ def compute_sepsis_score(input_file):
 
     # print("Y output shaspe ", y.get_shape())
     y = x
-    for k in range(1):
+    for k in range(3):
         # print("k = ", k)
         # print('build conv_x')
         x1 = y

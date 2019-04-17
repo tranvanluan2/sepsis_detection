@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import sys
 import numpy as np
 
@@ -209,6 +207,14 @@ def compute_sepsis_score(input_file):
     #read challenge data
     data = get_data_from_file(input_file)
     X_test, _ = prepare_input_for_lstm_crf([data], is_training=False)
+
+    #normalize test data
+    min_data = np.load('min_data.txt.npy')
+    max_data = np.load('max_data.txt.npy')
+
+    for idx, t_sequence in enumerate(X_test):
+        X_test[idx] = (t_sequence - min_data) / \
+            (max_data - min_data + 1e-8)
     scores = model.predict(np.array(X_test[0]).reshape((1, len(X_test[0]), 40)))[0]
     return scores    
 
@@ -228,7 +234,7 @@ def read_challenge_data(input_file):
 
 
 if __name__ == '__main__':
-    threshold = 0.5
+    threshold = 0.8
     if len(sys.argv) != 3:
         sys.exit('Usage: %s input[.psv] output[.out]' % sys.argv[0])
 
